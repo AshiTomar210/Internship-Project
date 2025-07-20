@@ -1,0 +1,33 @@
+<%- include('header', { title: 'Dashboard' }) %>
+
+<h2 class="mb-3">Intern Submissions</h2>
+<% if (submissions.length === 0) { %>
+  <p class="alert alert-warning">No tasks submitted yet.</p>
+<% } else { %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Level</th>
+      <th>Task</th>
+      <th>Description</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% submissions.forEach(sub => { %>
+      <tr>
+        <td><%= sub.name %></td>
+        <td><%= sub.email %></td>
+        <td><%= sub.taskLevel %></td>
+        <td><%= sub.taskName %></td>
+        <td><%= sub.description %></td>
+        <td><%= sub.submissionDate.toLocaleString() %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<% } %>
+
+<%- include('footer') %>
